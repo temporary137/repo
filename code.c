@@ -65,10 +65,24 @@ node* deleteFromEnd(node* list,int* flag){
 }
 
 
+void search(node *list){
+    char phonenumber[20];
+    printf("\nEnter the phonenumber to search for \n");
+    scanf("%s\n",phonenumber);
+    while(list != NULL){
+        if(list->phonenumber == phonenumber){
+            printf("Employee found with name %s\n",list->name);
+            break;
+        }
+        list = list->next;
+    }
+    printf("\n");
+}
+
 int main() {
     node* first = NULL;
     int opt,pos,val;
-    printf("Enter your choice 1. display 2. insert 3. delete \n");
+    printf("Enter your choice 1. display 2. insert 3. delete 4.search\n");
     scanf("%d",&opt);
     node *n;
     char name[20];
@@ -93,8 +107,11 @@ int main() {
                 if(flag == -1)
                     printf("Deletion not possible\n");
                 break;
+        case 4:
+            search(first);
+            break;
         }
-        printf("Enter your choice 1. display 2. insert 3. delete \n");
+        printf("Enter your choice 1. display 2. insert 3. delete 4.search\n");
        scanf("%d",&opt);
     }
 
