@@ -68,15 +68,15 @@ node* deleteFromEnd(node* list,int* flag){
 void search(node *list){
     char phonenumber[20];
     printf("\nEnter the phonenumber to search for \n");
-    scanf("%s\n",phonenumber);
+    scanf("%s",phonenumber);
     while(list != NULL){
-        if(list->phonenumber == phonenumber){
+        if(strcmp(list->phonenumber,phonenumber) == 0){
             printf("Employee found with name %s\n",list->name);
             break;
         }
         list = list->next;
     }
-    printf("\n");
+    printf("\n");    
 }
 
 int main() {
