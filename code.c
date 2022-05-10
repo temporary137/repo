@@ -1,4 +1,3 @@
-// code for normal linkedlist
 #include <math.h>
 #include <stdio.h>
 #include <string.h>
@@ -9,6 +8,9 @@
 
 typedef struct node{
     int val;
+    char name[20];
+    char phonenumber[20];
+    char emailid[20];
     struct node *next;
 }node;
 
@@ -20,9 +22,6 @@ void display(node* list){
         list = list->next;
     }
     printf("\n");
-    //Print space separated integers from the linked list
-    //list is the pointer pointing to the beginning of the linked list
-
 }
 
 node* createnod(){
@@ -30,22 +29,7 @@ node* createnod(){
     return n;
 }
 
-node* insertAtBeginning(node* list,int val){
-    node *n = createnod();
-    n->val = val;
-    if(list == NULL){
-        list = n;
-        list->next = NULL;
-        return n;
-    }
-    n->next = list;
-    return n;    //Write function to insert val at the beginning of the list and return a pointer pointing to beginning of the list
-
-}
-
-node* insertAtEnd(node* list,int val){
-    node *n = createnod();
-    n->val = val;
+node* insertAtEnd(node* list,node* n){
     if(list == NULL){
         list = n;
         list->next = NULL;
@@ -57,44 +41,9 @@ node* insertAtEnd(node* list,int val){
     }
     list->next = n;
     return first;
-    //Write function to insert val at the end of the list and return a pointer pointing to beginning of the list
-
-}
-
-node* insertAtPosition(node* list,int val,int pos){
-    //Write function to insert "val" at "pos" in the list and return a pointer pointing to beginning of the list
-
-    node *n = createnod();
-    n->val = val;
-    if(pos==0){
-        n->next = list;
-        return n;
-    }
-    node *first = list;
-    for(int i=1;i<pos;i++){
-        list = list->next;
-    }
-    node *temp = list->next;
-    list->next = n;
-    n->next = temp;
-    return first;
-}
-
-node* deleteFromBeginning(node* list,int* flag){
-    //Delete from the beginning of the list and return pointer pointing to the beginning of the list
-    //If deletion not possible set flag as -1 and return pointer to beginning of list
-   if(list == NULL){
-    *flag = -1;
-    return list;
-   }
-    node *temp = list->next;
-    list->next = NULL;
-    return temp;
 }
 
 node* deleteFromEnd(node* list,int* flag){
-    //Delete from the end of the list and return pointer to the beginning of the list
-    //If deletion not possible set flag as -1 and return pointer to beginning of list
     if(list == NULL){
         *flag = -1;
         return list;
@@ -113,61 +62,39 @@ node* deleteFromEnd(node* list,int* flag){
     return list;
 }
 
-node* deleteFromPosition(node* list,int pos,int* flag){
-    //Delete from the "pos" of the list and return pointer to the beginning of the list
-    //If deletion not possible set flag as -1 and return pointer to beginning of list
-    if(pos == 0){
-        list = list->next;
-        return list;
-    }
-    node *temp = list;
-    for(int i=1;i<pos;i++){
-        if(list == NULL){
-            *flag = -1;
-            return list;
-        }
-        list = list->next;
-    }
-    node *nxt;
-    nxt = list->next;
-    list->next = nxt->next;
-    return temp;
-}
-
 
 int main() {
-    /* Enter your code here. Read input from STDIN. Print output to STDOUT */
     node* first = NULL;
     int opt,pos,val;
+    printf("Enter your choice 1. display 2. insert 3. delete \n");
     scanf("%d",&opt);
     while(opt != 8){
         int flag = 0;
         switch(opt){
         case 1: display(first);
                 break;
-        case 2: scanf("%d",&val);
-                first = insertAtBeginning(first,val);
-                break;
-        case 3: scanf("%d",&val);
-                first = insertAtEnd(first,val);
-                break;
-        case 4: scanf("%d %d",&val,&pos);
-                first = insertAtPosition(first,val,pos);
-                break;
-        case 5: first = deleteFromBeginning(first,&flag);
-                if(flag == -1)
-                    printf("Deletion not possible\n");
-                break;
-        case 6: first = deleteFromEnd(first,&flag);
-                if(flag == -1)
-                    printf("Deletion not possible\n");
-                break;
-        case 7: scanf("%d",&pos);
-                first = deleteFromPosition(first,pos,&flag);
+        case 2:
+            node *n = createnod();
+            char name[20];
+            char email[20];
+            char phonenumber[20];
+            printf("Enter the name of the employee");
+            scanf("%s\n",name);
+            printf("Enter the phonenumber of the employee");
+            scanf("%s\n",phonenumber);
+            printf("Enter the email of the employee");
+            scanf("%s\n",email);
+            n->name = name;
+            n->email = email;
+            n->phonenumber = phonenumber;
+            first = insertAtEnd(first,n);
+            break;
+        case 3: first = deleteFromEnd(first,&flag);
                 if(flag == -1)
                     printf("Deletion not possible\n");
                 break;
         }
+        printf("Enter your choice 1. display 2. insert 3. delete \n");
        scanf("%d",&opt);
     }
 
