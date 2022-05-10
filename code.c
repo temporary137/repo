@@ -79,6 +79,23 @@ void search(node *list){
     printf("\n");
 }
 
+void swap(node *a,node *b)
+{
+    char name[20];
+    char emailid[20];
+    char phonenumber[20]
+    strcpy(name,a->name);
+    strcpy(a->name,b->name);
+    strcpy(b->name,name);
+    strcpy(emailid,a->emailid);
+    strcpy(a->emailid,b->emailid);
+    strcpy(b->emailid,emailid);
+    strcpy(phonenumber,a->phonenumber);
+    strcpy(a->phonenumber,b->phonenumber);
+    strcpy(b->phonenumber,phonenumber);
+
+}
+
 void sort(node *start)
 {
     int swapped, i;
@@ -104,27 +121,11 @@ void sort(node *start)
     while (swapped);
 }
 
-void swap(node *a,node *b)
-{
-    char name[20];
-    char emailid[20];
-    char phonenumber[20]
-    name = a->name;
-    a->name = b->name;
-    b->name = name;
-    emailid = a->emailid;
-    a->emailid = b->emailid;
-    b->emailid = emailid;
-    phonenumber = a->phonenumber;
-    a->phonenumber = b->phonenumber;
-    b->phonenumber = phonenumber;
-
-}
 
 int main() {
     node* first = NULL;
     int opt,pos,val;
-    printf("Enter your choice 1. display 2. insert 3. delete 4.search\n");
+    printf("Enter your choice 1. display 2. insert 3. delete 4.search 5.sort\n");
     scanf("%d",&opt);
     node *n;
     char name[20];
@@ -151,6 +152,9 @@ int main() {
                 break;
         case 4:
             search(first);
+            break;
+        case 5:
+            sort();
             break;
         }
         printf("Enter your choice 1. display 2. insert 3. delete 4.search\n");
