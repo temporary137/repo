@@ -20,7 +20,7 @@ void display(node* list){
     while(list != NULL){
         printf("%s \n",list->name);
         printf("%s \n",list->phonenumber);
-        printf("%s \n",list->email);
+        printf("%s \n",list->emailid);
         list = list->next;
     }
     printf("\n");
@@ -70,25 +70,23 @@ int main() {
     int opt,pos,val;
     printf("Enter your choice 1. display 2. insert 3. delete \n");
     scanf("%d",&opt);
+    node *n;
+    char name[20];
+    char email[20];
+    char phonenumber[20];
     while(opt != 8){
         int flag = 0;
         switch(opt){
         case 1: display(first);
                 break;
         case 2:
-            node *n = createnod();
-            char name[20];
-            char email[20];
-            char phonenumber[20];
-            printf("Enter the name of the employee");
-            scanf("%s\n",name);
-            printf("Enter the phonenumber of the employee");
-            scanf("%s\n",phonenumber);
-            printf("Enter the email of the employee");
-            scanf("%s\n",email);
-            n->name = name;
-            n->email = email;
-            n->phonenumber = phonenumber;
+            n = createnod();
+            printf("\nEnter the name of the employee\n");
+            scanf("%s",n->name);
+            printf("\nEnter the phonenumber of the employee\n");
+            scanf("%s",n->phonenumber);
+            printf("\nEnter the email of the employee\n");
+            scanf("%s",n->emailid);
             first = insertAtEnd(first,n);
             break;
         case 3: first = deleteFromEnd(first,&flag);
