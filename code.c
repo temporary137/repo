@@ -83,7 +83,7 @@ void swap(node *a,node *b)
 {
     char name[20];
     char emailid[20];
-    char phonenumber[20]
+    char phonenumber[20];
     strcpy(name,a->name);
     strcpy(a->name,b->name);
     strcpy(b->name,name);
@@ -93,7 +93,6 @@ void swap(node *a,node *b)
     strcpy(phonenumber,a->phonenumber);
     strcpy(a->phonenumber,b->phonenumber);
     strcpy(b->phonenumber,phonenumber);
-
 }
 
 void sort(node *start)
@@ -154,10 +153,10 @@ int main() {
             search(first);
             break;
         case 5:
-            sort();
+            sort(first);
             break;
         }
-        printf("Enter your choice 1. display 2. insert 3. delete 4.search\n");
+        printf("Enter your choice 1. display 2. insert 3. delete 4.search 5.sort\n");
        scanf("%d",&opt);
     }
 
