@@ -18,7 +18,9 @@ node n={.val = 0};
 
 void display(node* list){
     while(list != NULL){
-        printf("%d ",list->val);
+        printf("%s \n",list->name);
+        printf("%s \n",list->phonenumber);
+        printf("%s \n",list->email);
         list = list->next;
     }
     printf("\n");
