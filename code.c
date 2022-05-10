@@ -76,7 +76,49 @@ void search(node *list){
         }
         list = list->next;
     }
-    printf("\n");    
+    printf("\n");
+}
+
+void sort(node *start)
+{
+    int swapped, i;
+    node *ptr1;
+    node *lptr = NULL;
+    if (start == NULL)
+        return;
+    do
+    {
+        swapped = 0;
+        ptr1 = start;
+        while (ptr1->next != lptr)
+        {
+            if (strcmp(ptr1->name,ptr1->next->name) > 0)
+            {
+                swap(ptr1, ptr1->next);
+                swapped = 1;
+            }
+            ptr1 = ptr1->next;
+        }
+        lptr = ptr1;
+    }
+    while (swapped);
+}
+
+void swap(node *a,node *b)
+{
+    char name[20];
+    char emailid[20];
+    char phonenumber[20]
+    name = a->name;
+    a->name = b->name;
+    b->name = name;
+    emailid = a->emailid;
+    a->emailid = b->emailid;
+    b->emailid = emailid;
+    phonenumber = a->phonenumber;
+    a->phonenumber = b->phonenumber;
+    b->phonenumber = phonenumber;
+
 }
 
 int main() {
